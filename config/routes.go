@@ -2,7 +2,7 @@ package config
 
 import(
   "net/http"
-  "github.com/bobbyduhbrain/go-play/airplay"
+  "github.com/bobbyduhbrain/go-play/lib/airplay"
 )
 
 type Routes struct{}
