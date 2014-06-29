@@ -1,4 +1,5 @@
-user_service
-============
+go-play
+=======
 
-Implements a user authorization service in golang
+An attempt to create an Airplay compatible Go library
+
