@@ -4,8 +4,7 @@ import (
   "flag"
   "fmt"
   "net/http"
-
-  "github.com/bobbyduhbrain/go-play/airplay"
+  "github.com/bobbyduhbrain/go-play/config"
 )
 
 var port int
@@ -16,15 +15,8 @@ func init() {
 }
 
 func main(){
-  drawRoutes()
-  http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
-}
-
-//
-//  Draw the service routes
-//
-func drawRoutes(){
-  http.HandleFunc("/devices", new(airplay.Controller).Index)
+  new(config.Routes).Draw()                             //  Draw the HTTP accessible routes 
+  http.ListenAndServe(fmt.Sprintf(":%d", port), nil)    //  Begin listening for requests on port
 }
 
 
