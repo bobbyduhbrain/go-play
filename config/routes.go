@@ -1,12 +1,11 @@
 package config
 
 import(
-  "net/http"
   "github.com/bobbyduhbrain/go-play/lib/airplay/devices"
 )
 
 type Routes struct{}
 
 func (config *Routes) Draw(){
-  http.HandleFunc("/devices", new(devices.DevicesController).Index)
+ new(devices.DevicesRoutes).Draw()
 }
