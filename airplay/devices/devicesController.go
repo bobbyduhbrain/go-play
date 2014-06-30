@@ -12,11 +12,10 @@ import(
 //
 type DevicesController struct{}
 
-
 //
 //  Lists the Airplay compatible devices on the local area network
 //
-func (airplay *DevicesController) Index(w http.ResponseWriter, r *http.Request){
+func (devices *DevicesController) Index(w http.ResponseWriter, r *http.Request){
   bc := make(chan *dnssd.BrowseReply)
   ctx, err := dnssd.Browse(dnssd.DNSServiceInterfaceIndexAny, "_airplay._tcp", bc)
 

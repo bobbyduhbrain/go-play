@@ -10,11 +10,8 @@ import(
 type Routes struct{}
 
 //
-//  Draw the routes for each package in the airplay folder
-//  To add new actions, add the route to the {packages}/{packages}Routes.go
+//  Draw the routes for all controllers in the airplay package
 //
 func (config *Routes) Draw(){
-  devices_controller := new(devices.DevicesController)
-  devices_router     := new(devices.DevicesRoutes)
-  devices_router.Draw(devices_controller)
+  new(devices.DevicesRoutes).Draw(new(devices.DevicesController))
 }
