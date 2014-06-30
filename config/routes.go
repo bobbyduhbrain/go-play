@@ -8,5 +8,5 @@ import(
 type Routes struct{}
 
 func (config *Routes) Draw(){
-  http.HandleFunc("/devices", new(airplay.DevicesController).Index)
+  http.HandleFunc("/devices", new(devices.DevicesController).Index)
 }
