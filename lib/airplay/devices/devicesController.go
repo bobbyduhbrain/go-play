@@ -11,13 +11,6 @@ import(
 //
 type DevicesController struct{}
 
-//
-//  Draw Routes for DevicesController actions
-//
-func (airplay *DevicesController) Routes(){
-  http.HandleFunc("/devices", new(DevicesController).Index)
-}
-
 
 //
 //  Lists the Airplay compatible devices on the local area network
