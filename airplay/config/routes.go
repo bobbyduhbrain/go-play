@@ -1,7 +1,7 @@
 package config
 
 //
-// Import any packages with a RESTful API interface
+// Import go-play packages that require publically accessible routes
 //
 import(
   "github.com/bobbyduhbrain/go-play/airplay/devices"
@@ -10,9 +10,11 @@ import(
 type Routes struct{}
 
 //
-//  Draw the routes for each domain objects in the airplay folder
+//  Draw the routes for each package in the airplay folder
 //  To add new actions, add the route to the {packages}/{packages}Routes.go
 //
 func (config *Routes) Draw(){
-  new(devices.DevicesRoutes).Draw()
+  devices_controller := new(devices.DevicesController)
+  devices_router     := new(devices.DevicesRoutes)
+  devices_router.Draw(devices_controller)
 }
