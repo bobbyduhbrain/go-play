@@ -1,24 +1,28 @@
 package main
 
 import (
+  "github.com/bobbyduhbrain/go-play/airplay/config"
+  "github.com/bobbyduhbrain/go-play/airplay/service_discovery"
+  
   "flag"
   "fmt"
   "net/http"
-  "github.com/bobbyduhbrain/go-play/airplay/config"
+  "time"
 )
 
 var port int
 
+
 func init() {
   flag.IntVar(&port, "port", 8080, "port to run the server on")
   flag.Parse()
+  discoverer := new(service_discovery.Discoverer)
+  for _ = range time.Tick(2 * time.Second) { 
+    discoverer.Initialize()
+  }
 }
 
 func main(){
   new(config.Routes).Draw()                             //  Draw the HTTP accessible routes 
   http.ListenAndServe(fmt.Sprintf(":%d", port), nil)    //  Begin listening for requests on port
 }
-
-
-
-
