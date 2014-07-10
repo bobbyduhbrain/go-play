@@ -1,11 +1,9 @@
 package devices
 
 type Device struct{
-  Data string
-  Servicable bool
+  Data map[string]string
 }
 
-func (d *Device) Update(data string, servicable bool){
+func (d *Device) Update(data map[string]string){
   d.Data = data
-  d.Servicable = servicable
 }

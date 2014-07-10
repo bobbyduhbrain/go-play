@@ -17,7 +17,7 @@ func init() {
   flag.Parse()
   discoverer := service.NewDiscoverer()
   for _ = range time.Tick(2 * time.Second) { 
-    discoverer.Poll()
+    discoverer.Poll("_airplay._tcp")
   }
 }
 
