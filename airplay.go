@@ -15,9 +15,9 @@ var port int
 func init() {
   flag.IntVar(&port, "port", 8080, "port to run the server on")
   flag.Parse()
-  discoverer := service.NewDiscoverer()
+  browser := service.NewBrowser()
   for _ = range time.Tick(2 * time.Second) { 
-    discoverer.Poll("_airplay._tcp")
+    browser.Poll("_airplay._tcp")
   }
 }
 
