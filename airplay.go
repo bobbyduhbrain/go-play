@@ -2,7 +2,7 @@ package main
 
 import (
   "github.com/bobbyduhbrain/go-play/airplay/config"
-  "github.com/bobbyduhbrain/go-play/airplay/service_discovery"
+  "github.com/bobbyduhbrain/go-play/airplay/service"
   
   "flag"
   "fmt"
@@ -11,7 +11,6 @@ import (
 )
 
 var port int
-
 
 func init() {
   flag.IntVar(&port, "port", 8080, "port to run the server on")

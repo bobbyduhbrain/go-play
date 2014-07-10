@@ -2,13 +2,9 @@ package devices
 
 import(
   "fmt"
-  //"log"
   "net/http"
 )
 
-//
-//  Uses DNS-SD to detect Airplay devices on the LAN
-//
 type DevicesController struct{}
 
 //
