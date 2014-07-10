@@ -2,7 +2,7 @@ package main
 
 import (
   "github.com/bobbyduhbrain/go-play/airplay/config"
-  "github.com/bobbyduhbrain/go-play/airplay/service"
+  "github.com/bobbyduhbrain/go-play/airplay"
   
   "flag"
   "fmt"
@@ -15,7 +15,7 @@ var port int
 func init() {
   flag.IntVar(&port, "port", 8080, "port to run the server on")
   flag.Parse()
-  browser := service.NewBrowser()
+  browser := airplay.NewBrowser()
   for _ = range time.Tick(2 * time.Second) { 
     browser.Poll("_airplay._tcp")
   }
