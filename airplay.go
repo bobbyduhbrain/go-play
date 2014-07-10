@@ -15,9 +15,9 @@ var port int
 func init() {
   flag.IntVar(&port, "port", 8080, "port to run the server on")
   flag.Parse()
-  discoverer := new(service_discovery.Discoverer)
+  discoverer := service.NewDiscoverer()
   for _ = range time.Tick(2 * time.Second) { 
-    discoverer.Initialize()
+    discoverer.Poll()
   }
 }
 
