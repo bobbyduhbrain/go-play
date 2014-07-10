@@ -7,6 +7,7 @@ import(
 
 type DevicesController struct{}
 
+//  Public:
 //
 //  Lists the Airplay compatible devices on the local area network
 //

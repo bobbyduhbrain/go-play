@@ -10,12 +10,17 @@ type Browser struct{
   DeviceMap map[string]*devices.Device
 }
 
+//  Public:
+//
+//  Returns a pointer to a new Browser
+//
 func NewBrowser() *Browser {
   return &Browser{DeviceMap: make(map[string]*devices.Device)}
 }
 
+//  Public:
 //
-// Polls the network for compatible devices for a specific service type
+//  Polls the network for compatible devices for a specific service type
 //
 func (b *Browser) Poll(service_type string){
   poll, err := dnssd.StartBrowseOp(service_type, b.browse)
@@ -26,7 +31,8 @@ func (b *Browser) Poll(service_type string){
   poll.Stop()
 }
 
-// 
+//  Private:
+//
 //  DNSSD callback function for changes to services found on the network
 //
 func (b *Browser) browse(op *dnssd.BrowseOp, err error, device_servicable bool, interfaceIndex int, device_name string, serviceType string, domain string){
@@ -42,6 +48,7 @@ func (b *Browser) browse(op *dnssd.BrowseOp, err error, device_servicable bool, 
 }
 
 
+//  Private:
 //
 //  DNSSD callback function for resolving service discovery
 //
@@ -53,6 +60,7 @@ func (b *Browser) resolve_service_discovery(op *dnssd.ResolveOp, err error, host
   update_device_map(b.DeviceMap, op.Name(), host, port, txt)
 }
 
+//  Private:
 //
 //  Takes the DeviceMap of a Browser and updates the key-value with newly discovered information
 //
