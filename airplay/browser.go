@@ -3,11 +3,10 @@ package airplay
 import(
   "log"
   "github.com/andrewtj/dnssd"
-  "github.com/bobbyduhbrain/go-play/airplay/devices"
 )
 
 type Browser struct{
-  DeviceMap map[string]*devices.Device
+  DeviceMap map[string]*Device
 }
 
 //  Public:
@@ -15,7 +14,7 @@ type Browser struct{
 //  Returns a pointer to a new Browser
 //
 func NewBrowser() *Browser {
-  return &Browser{DeviceMap: make(map[string]*devices.Device)}
+  return &Browser{DeviceMap: make(map[string]*Device)}
 }
 
 //  Public:
@@ -64,9 +63,9 @@ func (b *Browser) resolve_service_discovery(op *dnssd.ResolveOp, err error, host
 //
 //  Takes the DeviceMap of a Browser and updates the key-value with newly discovered information
 //
-func update_device_map(dm map[string]*devices.Device, name string, host string, port int, txt map[string]string){
+func update_device_map(dm map[string]*Device, name string, host string, port int, txt map[string]string){
   if dev,mapped := dm[name]; !mapped {
-    dm[name] = &devices.Device { Host: host, Port: port, ServerInfo: txt}
+    dm[name] = &Device { Host: host, Port: port, ServerInfo: txt}
   } else {
     dev.Update(host, port, txt)
     log.Printf("%v", *dev)
